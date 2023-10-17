@@ -193,7 +193,7 @@
     }
   },
   "publishConfig": {
-    "access": "public"
+    "registry":"http://my-internal-registry.local"
   },
   "vetur": {
     "tags": "dist/json/tags.json",
