@@ -8,11 +8,6 @@
   },
   "license": "MIT",
   "homepage": "https://vuetifyjs.com",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vuetifyjs/vuetify.git",
-    "directory": "packages/vuetify"
-  },
   "keywords": [
     "vuetify",
     "ui framework",
