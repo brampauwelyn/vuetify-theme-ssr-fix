@@ -91,3 +91,9 @@
   transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1;
 }
+
+.v-navigation-drawer__prepend,
+.v-navigation-drawer__append {
+  flex: none;
+  overflow: hidden;
+}
