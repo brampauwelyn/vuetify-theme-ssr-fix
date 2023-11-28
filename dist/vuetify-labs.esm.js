@@ -8604,15 +8604,15 @@ function connectedLocationStrategy(data, props, contentStyles) {
     Object.assign(contentStyles.value, {
       position: 'fixed',
       top: 0,
-      [data.isRtl.value ? 'right' : 'left']: 0
+      [data.isRtl ? 'right' : 'left']: 0
     });
   }
   const {
     preferredAnchor,
     preferredOrigin
   } = destructComputed(() => {
-    const parsedAnchor = parseAnchor(props.location, data.isRtl.value);
-    const parsedOrigin = props.origin === 'overlap' ? parsedAnchor : props.origin === 'auto' ? flipSide(parsedAnchor) : parseAnchor(props.origin, data.isRtl.value);
+    const parsedAnchor = parseAnchor(props.location, data.isRtl);
+    const parsedOrigin = props.origin === 'overlap' ? parsedAnchor : props.origin === 'auto' ? flipSide(parsedAnchor) : parseAnchor(props.origin, data.isRtl);
 
     // Some combinations of props may produce an invalid origin
     if (parsedAnchor.side === parsedOrigin.side && parsedAnchor.align === flipAlign(parsedOrigin).align) {
@@ -8670,7 +8670,7 @@ function connectedLocationStrategy(data, props, contentStyles) {
     });
     if (!data.target.value || !data.contentEl.value) return;
     const targetBox = getTargetBox(data.target.value);
-    const contentBox = getIntrinsicSize(data.contentEl.value, data.isRtl.value);
+    const contentBox = getIntrinsicSize(data.contentEl.value, data.isRtl);
     const scrollParents = getScrollParents(data.contentEl.value);
     const viewportMargin = 12;
     if (!scrollParents.length) {
@@ -8846,8 +8846,8 @@ function connectedLocationStrategy(data, props, contentStyles) {
       transformOrigin: `${placement.origin.side} ${placement.origin.align}`,
       // transform: `translate(${pixelRound(x)}px, ${pixelRound(y)}px)`,
       top: convertToUnit(pixelRound(y)),
-      left: data.isRtl.value ? undefined : convertToUnit(pixelRound(x)),
-      right: data.isRtl.value ? convertToUnit(pixelRound(-x)) : undefined,
+      left: data.isRtl ? undefined : convertToUnit(pixelRound(x)),
+      right: data.isRtl ? convertToUnit(pixelRound(-x)) : undefined,
       minWidth: convertToUnit(axis === 'y' ? Math.min(minWidth.value, targetBox.width) : minWidth.value),
       maxWidth: convertToUnit(pixelCeil(clamp(available.x, minWidth.value === Infinity ? 0 : minWidth.value, maxWidth.value))),
       maxHeight: convertToUnit(pixelCeil(clamp(available.y, minHeight.value === Infinity ? 0 : minHeight.value, maxHeight.value)))
